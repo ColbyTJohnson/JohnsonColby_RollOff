@@ -31,9 +31,9 @@ public class MusicManager : MonoBehaviour {
 	
 		audioSource = GetComponent<AudioSource>();
 		
-//		PlayerPrefsManager.SetMasterVolume(.75f);
+		PlayerPrefsManager.SetMasterVolume(.75f);
 		
-//		audioSource.volume = PlayerPrefsManager.GetMasterVolume();	
+		audioSource.volume = PlayerPrefsManager.GetMasterVolume();	
 	
 	}
 	
