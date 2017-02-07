@@ -4,7 +4,7 @@
 
 // Project: Roll Off!
 
-// Last Updated: 02/06/2016
+// Last Updated: 02/06/2017
 
 // Credit: Learn to Code By Making Games - Ben Tristem
 
@@ -46,6 +46,8 @@ public class MusicManager : MonoBehaviour {
 		if (thisLevelMusic) {
 		
 			audioSource.clip = thisLevelMusic;
+
+			audioSource.loop = true;
 			
 			audioSource.Play();
 		
