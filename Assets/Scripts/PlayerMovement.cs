@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void Move (Vector3 moveDirection, bool jump) {
 
+		rigidbody = GetComponent<Rigidbody>();
+		rigidbody.maxAngularVelocity = maxAngularVelocity;
+
 		if (useTorque) {
 
 			rigidbody.AddTorque (new Vector3 (moveDirection.z, 0, -moveDirection.x) * torquePower);

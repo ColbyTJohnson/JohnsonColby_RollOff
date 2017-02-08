@@ -6,8 +6,6 @@
 
 // Last Updated: 02/07/2017
 
-// Credit: Learn to Code By Making Games - Ben Tristem
-
 // Purpose: A script to identify the death collider
 
 // -------------------------------------------------------------------------------------------

@@ -17,15 +17,15 @@ using System.Collections.Generic;
 
 public class PlayerOneScore : MonoBehaviour {
 
-	private GameManager gameManager;
-	private Text playerOneText;
+	public GameManager gameManager;
+	public Text playerOneText;
 
 	// Use this for initialization
 	void Start () {
 
-		gameManager = FindObjectOfType<GameManager>();
+//		gameManager = FindObjectOfType<GameManager>();
 
-		playerOneText = GetComponent<Text>();
+//		playerOneText = GetComponent<Text>();
 	
 	}
 	
