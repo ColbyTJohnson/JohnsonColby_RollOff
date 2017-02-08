@@ -38,13 +38,13 @@ public class PlayerOneScore : MonoBehaviour {
 
 	public void UpdateScore () {
 
-		int playerOneScore = gameManager.GetPlayerTwoScore();
+		int playerOneScore = gameManager.GetPlayerOneScore();
 
-		Debug.Log ("player two score is " + playerOneScore);
+//		Debug.Log ("player two score is " + playerOneScore);
 
 		playerOneText.text = playerOneScore.ToString();
 
-		Debug.Log ("Scoreboard update called with " + gameManager.GetPlayerOneScore() + " as the new score");
+//		Debug.Log ("Scoreboard update called with " + gameManager.GetPlayerOneScore() + " as the new score");
 
 	}
 

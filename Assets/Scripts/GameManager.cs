@@ -18,8 +18,17 @@ public class GameManager : MonoBehaviour {
 	private int playerOneScore = 0;
 	private int playerTwoScore = 0;
 
+	private Vector3 playerOneInit = new Vector3 (-8, -6, 0);
+	private Vector3 playerTwoInit = new Vector3 (8, -6, 0);
+
 	private PlayerOneScore scoreOne;
 	private PlayerTwoScore scoreTwo;
+
+	private PlayerOne playerOne;
+	private PlayerTwo playerTwo;
+
+	public GameObject playerOneObject;
+	public GameObject playerTwoObject;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +38,9 @@ public class GameManager : MonoBehaviour {
 
 		SetPlayerOneScore (playerOneScore);
 		SetPlayerTwoScore (playerTwoScore);
+
+		playerOne = FindObjectOfType<PlayerOne>();
+		playerTwo = FindObjectOfType<PlayerTwo>();
 
 	}
 	
@@ -55,11 +67,11 @@ public class GameManager : MonoBehaviour {
 
 		playerOneScore = score;
 
-		Debug.Log ("GameManager new score = " + score);
+//		Debug.Log ("GameManager new score = " + score);
 
 		scoreOne.UpdateScore();
 
-		Debug.Log ("Player One Score updated in gamemanager");
+//		Debug.Log ("Player One Score updated in gamemanager");
 
 	}
 
@@ -67,11 +79,18 @@ public class GameManager : MonoBehaviour {
 
 		playerTwoScore = score;
 
-		Debug.Log ("GameManager new score = " + score);
+//		Debug.Log ("GameManager new score = " + score);
 
 		scoreTwo.UpdateScore();
 
-		Debug.Log ("Player Two Score updated in gamemanager");
+//		Debug.Log ("Player Two Score updated in gamemanager");
+
+	}
+
+	public void ResetRound () {
+
+		playerOneObject.transform.position = playerOneInit;
+		playerTwoObject.transform.position = playerTwoInit;
 
 	}
 

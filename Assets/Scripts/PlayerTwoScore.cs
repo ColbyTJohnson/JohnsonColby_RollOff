@@ -40,11 +40,11 @@ public class PlayerTwoScore : MonoBehaviour {
 
 		int playerTwoScore = gameManager.GetPlayerTwoScore();
 
-		Debug.Log ("player two score is " + playerTwoScore);
+//		Debug.Log ("player two score is " + playerTwoScore);
 
 		playerTwoText.text = playerTwoScore.ToString();
 
-		Debug.Log ("Scoreboard update called with " + gameManager.GetPlayerTwoScore() + " as the new score");
+//		Debug.Log ("Scoreboard update called with " + gameManager.GetPlayerTwoScore() + " as the new score");
 
 	}
 
