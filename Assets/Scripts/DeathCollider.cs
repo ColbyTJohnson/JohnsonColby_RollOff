@@ -17,13 +17,44 @@ using System.Collections;
 
 public class DeathCollider : MonoBehaviour {
 
+	private GameManager gameManager;
+
 	// Use this for initialization
 	void Start () {
+
+		gameManager = FindObjectOfType<GameManager>();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		
 	
 	}
+
+	void OnTriggerEnter (Collider other) {
+
+		if (other.name == "Player1") {
+
+			Debug.Log ("Player1 loses");
+
+			int curScore = gameManager.GetPlayerTwoScore();
+
+			int newScore = curScore++;
+
+			gameManager.SetPlayerTwoScore(newScore);
+
+		} else if (other.name == "Player2") {
+
+			int curScore = gameManager.GetPlayerOneScore();
+
+			int newScore = curScore++;
+
+			gameManager.SetPlayerOneScore(newScore);
+
+		}
+
+	}
+
 }
