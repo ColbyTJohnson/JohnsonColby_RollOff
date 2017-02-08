@@ -41,9 +41,15 @@ public class DeathCollider : MonoBehaviour {
 
 			int curScore = gameManager.GetPlayerTwoScore();
 
-			int newScore = curScore++;
+			Debug.Log ("CurScore = " + curScore);
 
-			gameManager.SetPlayerTwoScore(newScore);
+			curScore++;
+
+			Debug.Log ("New Score updated to " + curScore);
+
+			gameManager.SetPlayerTwoScore(curScore);
+
+			Debug.Log ("Scoreboard called");
 
 		} else if (other.name == "Player2") {
 

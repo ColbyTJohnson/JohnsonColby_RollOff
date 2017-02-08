@@ -15,10 +15,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Score : MonoBehaviour {
+public class PlayerTwoScore : MonoBehaviour {
 
 	private GameManager gameManager;
-	private Text playerOneText;
 	private Text playerTwoText;
 
 	// Use this for initialization
@@ -26,36 +25,26 @@ public class Score : MonoBehaviour {
 
 		gameManager = FindObjectOfType<GameManager>();
 
-		if (this.name == "Player 1 Score") {
-
-			playerOneText = GetComponent<Text>();
-
-		} else if (this.name == "Player 2 Score") {
-
-			playerTwoText = GetComponent<Text>();
-
-		}
+		playerTwoText = GetComponent<Text>();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		UpdateScore ();
+
 	
 	}
 
-	void UpdateScore () {
+	public void UpdateScore () {
 
-		if (this.name == "Player 1 Score") {
+		int playerTwoScore = gameManager.GetPlayerTwoScore();
 
-			playerOneText.text = gameManager.GetPlayerOneScore().ToString();
+		Debug.Log ("player two score is " + playerTwoScore);
 
-		} else if (this.name == "Player 2 Score") {
+		playerTwoText.text = playerTwoScore.ToString();
 
-			playerTwoText.text = gameManager.GetPlayerTwoScore().ToString();
-
-		}
+		Debug.Log ("Scoreboard update called with " + gameManager.GetPlayerTwoScore() + " as the new score");
 
 	}
 

@@ -18,11 +18,14 @@ public class GameManager : MonoBehaviour {
 	private int playerOneScore = 0;
 	private int playerTwoScore = 0;
 
-	private DeathCollider deathCollider;
-
+	private PlayerOneScore scoreOne;
+	private PlayerTwoScore scoreTwo;
 
 	// Use this for initialization
 	void Start () {
+
+		scoreOne = FindObjectOfType<PlayerOneScore>();
+		scoreTwo = FindObjectOfType<PlayerTwoScore>();
 
 		SetPlayerOneScore (playerOneScore);
 		SetPlayerTwoScore (playerTwoScore);
@@ -52,11 +55,23 @@ public class GameManager : MonoBehaviour {
 
 		playerOneScore = score;
 
+		Debug.Log ("GameManager new score = " + score);
+
+		scoreOne.UpdateScore();
+
+		Debug.Log ("Player One Score updated in gamemanager");
+
 	}
 
 	public void SetPlayerTwoScore (int score) {
 
 		playerTwoScore = score;
+
+		Debug.Log ("GameManager new score = " + score);
+
+		scoreTwo.UpdateScore();
+
+		Debug.Log ("Player Two Score updated in gamemanager");
 
 	}
 
