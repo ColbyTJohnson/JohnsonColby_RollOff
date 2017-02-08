@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] private float maxAngularVelocity = 25f;
 	[SerializeField] private float jumpPower = 2f;
 
-	private const float k_GroundRayLength = 1f;
+	private const float k_GroundRayLength = 2f;
 	private Rigidbody rigidbody;
 
 	// Use this for initialization

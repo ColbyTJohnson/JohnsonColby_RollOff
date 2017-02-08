@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
 
 	public void ResetRound () {
 
-		Debug.Log ("Reset Round called");
+//		Debug.Log ("Reset Round called");
 
 		playerOneControl.enabled = false;
 		playerTwoControl.enabled = false;
@@ -113,14 +113,14 @@ public class GameManager : MonoBehaviour {
 		playerOneObject.GetComponent<Rigidbody>().isKinematic = true;
 		playerTwoObject.GetComponent<Rigidbody>().isKinematic = true;
 
-		Debug.Log ("Player movement disabled");
+//		Debug.Log ("Player movement disabled");
 
 		playerOneObject.transform.position = playerOneInit;
 		playerTwoObject.transform.position = playerTwoInit;
 
 	    StartCoroutine("RunCountdownCoroutine");
 
-		Debug.Log ("Countdown finished");
+//		Debug.Log ("Countdown finished");
 
 
 	}
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour {
 		playerOneObject.GetComponent<Rigidbody>().isKinematic = false;
 		playerTwoObject.GetComponent<Rigidbody>().isKinematic = false;
 
-		Debug.Log ("Player movement enabled");
+//		Debug.Log ("Player movement enabled");
 
 	}
 

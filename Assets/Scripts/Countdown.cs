@@ -18,14 +18,14 @@ using System.Collections;
 
 public class Countdown : MonoBehaviour {
 
-	private Text countdownText;
+	public Text countdownText;
 
-	private bool showCountdown = false;
+//	private bool showCountdown = false;
 
 	// Use this for initialization
 	void Start () {
 
-		countdownText = GetComponent<Text>();
+//		countdownText = GetComponent<Text>();
 
 		countdownText.text = "";
 	
@@ -40,7 +40,7 @@ public class Countdown : MonoBehaviour {
 
 	public IEnumerator RunCountdown () {
 
-		showCountdown = true;
+//		showCountdown = true;
 
 		countdownText.text = "3";
 		yield return new WaitForSeconds (1f);
@@ -56,17 +56,7 @@ public class Countdown : MonoBehaviour {
 
 		countdownText.text = "";
 
-		showCountdown = false;
-
-	}
-
-	void OnGUI () {
-
-		if (showCountdown) {
-
-			
-
-		}
+//		showCountdown = false;
 
 	}
 
