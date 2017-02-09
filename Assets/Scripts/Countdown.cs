@@ -27,7 +27,7 @@ public class Countdown : MonoBehaviour {
 
 //		countdownText = GetComponent<Text>();
 
-		countdownText.text = "";
+		countdownText.text = "3";
 	
 	}
 	
@@ -41,7 +41,7 @@ public class Countdown : MonoBehaviour {
 	public IEnumerator RunCountdown () {
 
 //		showCountdown = true;
-
+		
 		countdownText.text = "3";
 		yield return new WaitForSeconds (1f);
 
