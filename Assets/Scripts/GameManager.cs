@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
 	public int playerOneScore = 0;
 	public int playerTwoScore = 0;
 
-	private Vector3 playerOneInit = new Vector3 (-8, -6, 0);
-	private Vector3 playerTwoInit = new Vector3 (8, -6, 0);
+	private Vector3 playerOneInit = new Vector3 (-8, -8, 0);
+	private Vector3 playerTwoInit = new Vector3 (8, -8, 0);
 
 	private PlayerOneScore scoreOne;
 	private PlayerTwoScore scoreTwo;
@@ -33,8 +33,11 @@ public class GameManager : MonoBehaviour {
 
 	private Countdown countdown;
 
-	public GameObject playerOneObject;
-	public GameObject playerTwoObject;
+	private GameObject playerOneObject;
+	private GameObject playerTwoObject;
+
+	private Rigidbody playerOneRigidbody;
+	private Rigidbody playerTwoRigidbody;
 
 	// Use this for initialization
 	void Start () {
@@ -42,14 +45,7 @@ public class GameManager : MonoBehaviour {
 		playerOneScore = 0;
 		playerTwoScore = 0;
 
-		scoreOne = FindObjectOfType<PlayerOneScore>();
-		scoreTwo = FindObjectOfType<PlayerTwoScore>();
-
-		playerOneControl = playerOneObject.GetComponent<PlayerControl>();
-		playerTwoControl = playerTwoObject.GetComponent<PlayerControl>();
-
-		playerOneMove = playerOneObject.GetComponent<PlayerMovement>();
-		playerTwoMove = playerTwoObject.GetComponent<PlayerMovement>();
+		Identify ();
 
 		SetPlayerOneScore (playerOneScore);
 		SetPlayerTwoScore (playerTwoScore);
@@ -65,6 +61,25 @@ public class GameManager : MonoBehaviour {
 
 		
 	
+	}
+
+	void Identify () {
+
+		playerOneObject = GameObject.FindGameObjectWithTag("Player1");
+		playerTwoObject = GameObject.FindGameObjectWithTag("Player2");
+
+		scoreOne = FindObjectOfType<PlayerOneScore> ();
+		scoreTwo = FindObjectOfType<PlayerTwoScore> ();
+
+		playerOneControl = playerOneObject.GetComponent<PlayerControl> ();
+		playerTwoControl = playerTwoObject.GetComponent<PlayerControl> ();
+
+		playerOneMove = playerOneObject.GetComponent<PlayerMovement> ();
+		playerTwoMove = playerTwoObject.GetComponent<PlayerMovement> ();
+
+		playerOneRigidbody = playerOneObject.GetComponent<Rigidbody>();
+		playerTwoRigidbody = playerTwoObject.GetComponent<Rigidbody>();
+
 	}
 
 	public int GetPlayerOneScore () {
@@ -107,16 +122,24 @@ public class GameManager : MonoBehaviour {
 
 //		Debug.Log ("Reset Round called");
 
+		Destroy (playerOneObject);
+		Destroy (playerTwoObject);
+
+		Instantiate (playerOneObject, playerOneInit, Quaternion.identity);
+		Instantiate (playerTwoObject, playerTwoInit, Quaternion.identity);
+
+		Identify ();
+
 		playerOneControl.enabled = false;
 		playerTwoControl.enabled = false;
 
-		playerOneObject.GetComponent<Rigidbody>().isKinematic = true;
-		playerTwoObject.GetComponent<Rigidbody>().isKinematic = true;
+		playerOneRigidbody.isKinematic = true;
+		playerTwoRigidbody.isKinematic = true;
 
-//		Debug.Log ("Player movement disabled");
+		Debug.Log ("Player movement disabled");
 
-		playerOneObject.transform.position = playerOneInit;
-		playerTwoObject.transform.position = playerTwoInit;
+//		playerOneObject.transform.position = playerOneInit;
+//		playerTwoObject.transform.position = playerTwoInit;
 
 	    StartCoroutine("RunCountdownCoroutine");
 
@@ -129,15 +152,24 @@ public class GameManager : MonoBehaviour {
 
 		countdown.StartCoroutine("RunCountdown");
 
+		Debug.Log ("Countdown started");
+
 		yield return new WaitForSeconds (3.0f);
+
+		Debug.Log ("Wait finished");
+
+		Identify ();
 
 		playerOneControl.enabled = true;
 		playerTwoControl.enabled = true;
 
-		playerOneObject.GetComponent<Rigidbody>().isKinematic = false;
-		playerTwoObject.GetComponent<Rigidbody>().isKinematic = false;
+		playerOneMove.enabled = true;
+		playerTwoMove.enabled = true;
 
-//		Debug.Log ("Player movement enabled");
+		playerOneRigidbody.isKinematic = false;
+		playerTwoRigidbody.isKinematic = false;
+
+		Debug.Log ("Player movement enabled");
 
 	}
 

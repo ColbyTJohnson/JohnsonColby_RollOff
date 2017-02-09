@@ -35,7 +35,7 @@ public class DeathCollider : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 
-		if (other.name == "Player1") {
+		if (other.tag == "Player1") {
 
 //			Debug.Log ("Player1 loses");
 
@@ -51,7 +51,7 @@ public class DeathCollider : MonoBehaviour {
 
 //			Debug.Log ("Scoreboard called");
 
-		} else if (other.name == "Player2") {
+		} else if (other.tag == "Player2") {
 
 			int curScore = gameManager.GetPlayerOneScore();
 

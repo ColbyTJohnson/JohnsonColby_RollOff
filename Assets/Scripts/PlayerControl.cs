@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (this.name == "Player1") {
+		if (this.tag == "Player1") {
 
 			if (Input.GetKeyDown(KeyCode.A)) {
 
@@ -50,7 +50,7 @@ public class PlayerControl : MonoBehaviour {
 
 			}
 
-		} else if (this.name == "Player2") {
+		} else if (this.tag == "Player2") {
 
 			if (Input.GetKeyDown(KeyCode.J)) {
 
