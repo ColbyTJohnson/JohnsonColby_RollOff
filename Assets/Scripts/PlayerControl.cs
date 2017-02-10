@@ -30,6 +30,13 @@ public class PlayerControl : MonoBehaviour {
 		playerMovement = GetComponent<PlayerMovement>();
 
 	}
+
+	void Awake () {
+
+//		GetComponentInChildren<PlayerOne>().enabled = true;
+//		GetComponentInChildren<AudioSource>().enabled = true;
+
+	}
 	
 	// Update is called once per frame
 	void Update () {

@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour {
 	private Rigidbody playerOneRigidbody;
 	private Rigidbody playerTwoRigidbody;
 
+	private AudioSource pOneAudioSource;
+	private PlayerOne playerOne;
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -80,6 +84,9 @@ public class GameManager : MonoBehaviour {
 		playerOneRigidbody = playerOneObject.GetComponent<Rigidbody>();
 		playerTwoRigidbody = playerTwoObject.GetComponent<Rigidbody>();
 
+		playerOne = playerOneObject.GetComponentInChildren<PlayerOne>();
+		pOneAudioSource = playerOneObject.GetComponentInChildren<AudioSource>();
+
 	}
 
 	public int GetPlayerOneScore () {
@@ -120,7 +127,7 @@ public class GameManager : MonoBehaviour {
 
 	public void ResetRound () {
 
-//		Debug.Log ("Reset Round called");
+		Debug.Log ("Reset Round called");
 
 		Destroy (playerOneObject);
 		Destroy (playerTwoObject);
@@ -165,6 +172,9 @@ public class GameManager : MonoBehaviour {
 
 		playerOneMove.enabled = true;
 		playerTwoMove.enabled = true;
+
+		playerOne.enabled = true;
+		pOneAudioSource.enabled = true;
 
 		playerOneRigidbody.isKinematic = false;
 		playerTwoRigidbody.isKinematic = false;
