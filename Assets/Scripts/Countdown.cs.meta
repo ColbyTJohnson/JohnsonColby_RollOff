@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: a9442ad5b86a6448aaf78b2f956e564d
-timeCreated: 1486586811
+timeCreated: 1486692205
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - countdownText: {instanceID: 0}
+  - beep: {fileID: 8300000, guid: 1ebf358de1c2145a3be0228e047ce2f4, type: 3}
+  - go: {fileID: 8300000, guid: 9bce8f9ad114a47ff8ed6c6f2994ff9f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -41,17 +41,21 @@ public class PlayerOne : MonoBehaviour {
 
 			float random = Random.value;
 
-			if (random > 0.66) {
+			if (random > 0.75) {
 
 				audioSource.PlayOneShot(hits[0]);
 
-			} else if (random < 0.33) {
+			} else if (random < 0.25) {
 
 				audioSource.PlayOneShot(hits[1]);
 
-			} else {
+			} else if (random <= 0.25 && random > 0.5) {
 
 				audioSource.PlayOneShot(hits[2]);
+
+			} else {
+
+				audioSource.PlayOneShot(hits[3]);
 
 			}
 

@@ -20,14 +20,17 @@ public class Countdown : MonoBehaviour {
 
 	public Text countdownText;
 
+	public AudioClip beep;
+	public AudioClip go;
+
+	private AudioSource audioSource;
+
 //	private bool showCountdown = false;
 
 	// Use this for initialization
 	void Start () {
 
 //		countdownText = GetComponent<Text>();
-
-		countdownText.text = "3";
 	
 	}
 	
@@ -40,17 +43,26 @@ public class Countdown : MonoBehaviour {
 
 	public IEnumerator RunCountdown () {
 
+		audioSource = GetComponent<AudioSource>();
+
 //		showCountdown = true;
-		
+
+		countdownText.text = "";
+		yield return new WaitForSeconds (2f);
+
+		audioSource.PlayOneShot(beep);
 		countdownText.text = "3";
 		yield return new WaitForSeconds (1f);
 
+		audioSource.PlayOneShot(beep);
 		countdownText.text = "2";
 		yield return new WaitForSeconds (1f);
 
+		audioSource.PlayOneShot(beep);
 		countdownText.text = "1";
 		yield return new WaitForSeconds (1f);
 
+		audioSource.PlayOneShot(go);
 		countdownText.text = "GO";
 		yield return new WaitForSeconds (1f);
 
