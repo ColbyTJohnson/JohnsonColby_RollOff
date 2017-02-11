@@ -35,7 +35,7 @@ public class PlayerOne : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 
-		audioSource = GetComponent<AudioSource>();
+		audioSource = GetComponentInParent<AudioSource>();
 
 		if (other.tag == "Player2") {
 

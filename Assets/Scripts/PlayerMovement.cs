@@ -25,14 +25,19 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] private float maxAngularVelocity = 25f;
 	[SerializeField] private float jumpPower = 2f;
 
+	public AudioClip jumpSound;
+
 	private const float k_GroundRayLength = 2f;
 	private Rigidbody rigidbody;
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
 
 		rigidbody = GetComponent<Rigidbody>();
 		rigidbody.maxAngularVelocity = maxAngularVelocity;
+
+		audioSource = GetComponent<AudioSource>();
 	
 	}
 	
@@ -61,6 +66,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (Physics.Raycast (transform.position, -Vector3.up, k_GroundRayLength) && jump) {
 
 			rigidbody.AddForce (Vector3.up * jumpPower, ForceMode.VelocityChange);
+			audioSource.PlayOneShot (jumpSound);
 
 		}
 

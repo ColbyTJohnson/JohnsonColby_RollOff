@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour {
 	private Rigidbody playerTwoRigidbody;
 
 	private AudioSource pOneAudioSource;
+	private AudioSource pOneMainAudio;
+	private AudioSource pTwoMainAudio;
 	private PlayerOne playerOne;
 
 
@@ -85,6 +87,8 @@ public class GameManager : MonoBehaviour {
 		playerTwoRigidbody = playerTwoObject.GetComponent<Rigidbody>();
 
 		playerOne = playerOneObject.GetComponentInChildren<PlayerOne>();
+		pOneMainAudio = playerOneObject.GetComponent<AudioSource>();
+		pTwoMainAudio = playerTwoObject.GetComponent<AudioSource>();
 		pOneAudioSource = playerOneObject.GetComponentInChildren<AudioSource>();
 
 	}
@@ -175,6 +179,8 @@ public class GameManager : MonoBehaviour {
 
 		playerOne.enabled = true;
 		pOneAudioSource.enabled = true;
+		pOneMainAudio.enabled = true;
+		pTwoMainAudio.enabled = true;
 
 		playerOneRigidbody.isKinematic = false;
 		playerTwoRigidbody.isKinematic = false;
