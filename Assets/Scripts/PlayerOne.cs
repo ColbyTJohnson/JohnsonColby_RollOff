@@ -17,6 +17,9 @@ public class PlayerOne : MonoBehaviour {
 
 	public AudioClip[] hits;
 
+	public GameObject redCol;
+	public GameObject blueCol;
+
 	private AudioSource audioSource;
 
 	// Use this for initialization
@@ -58,6 +61,9 @@ public class PlayerOne : MonoBehaviour {
 				audioSource.PlayOneShot(hits[3]);
 
 			}
+
+			Instantiate (redCol, transform.position, Quaternion.identity);
+			Instantiate (blueCol, other.transform.position, Quaternion.identity);
 
 			Debug.Log ("Audio played");
 
