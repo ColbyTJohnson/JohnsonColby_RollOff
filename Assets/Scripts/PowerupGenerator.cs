@@ -34,6 +34,8 @@ public class PowerupGenerator : MonoBehaviour {
 	void Start () {
 	
 		initialPos = transform.position;
+
+		timer = 0;
 	
 	}
 	

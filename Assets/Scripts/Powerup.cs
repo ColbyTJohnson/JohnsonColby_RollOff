@@ -23,6 +23,10 @@ public class Powerup : MonoBehaviour {
 
 	[SerializeField] AudioClip pickupSound;
 
+	[SerializeField] GameObject particles;
+
+	private bool beingDestroyed;
+
 	private Renderer renderer;
 
 	// Use this for initialization
@@ -41,15 +45,19 @@ public class Powerup : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		transform.position += transform.up * Time.deltaTime * moveSpeed;
+		transform.position -= transform.up * Time.deltaTime * moveSpeed;
 
-		if(Time.fixedTime % flashDelay < .2) {
+		if (!beingDestroyed) {
+			
+			if (Time.fixedTime % flashDelay < .2) {
 		
-			renderer.enabled = false;
+				renderer.enabled = false;
 		
-		} else {
+			} else {
 		
-			renderer.enabled = true;
+				renderer.enabled = true;
+			}
+
 		}
 		
 	}
@@ -60,8 +68,10 @@ public class Powerup : MonoBehaviour {
 		
 			// Play the destroy sound upon being shot
 			GetComponent<AudioSource>().PlayOneShot(pickupSound);
-			
-			// Destroy the enemy
+
+			beingDestroyed = true;
+
+			// Destroy the powerup
 			StartDestroy(pickupSound.length);
 		
 		}
@@ -69,9 +79,11 @@ public class Powerup : MonoBehaviour {
 	}
 	
 	void StartDestroy (float timeDelay) {
+
+		Instantiate (particles, transform.position, Quaternion.identity);
 		
 		// Disable the renderer and collider so that they are no longer visible/active
-		GetComponent<Renderer>().enabled = false;
+		GetComponent<MeshRenderer>().enabled = false;
 		GetComponent<Collider>().enabled = false;
 		
 		// Start the delayed destroy

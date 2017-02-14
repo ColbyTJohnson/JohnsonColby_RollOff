@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 	private AudioSource pOneMainAudio;
 	private AudioSource pTwoMainAudio;
 	private PlayerOne playerOne;
-
+	private PlayerTwo playerTwo;
 
 	// Use this for initialization
 	void Start () {
@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour {
 		playerTwoRigidbody = playerTwoObject.GetComponent<Rigidbody>();
 
 		playerOne = playerOneObject.GetComponentInChildren<PlayerOne>();
+		playerTwo = playerTwoObject.GetComponentInChildren<PlayerTwo>();
 		pOneMainAudio = playerOneObject.GetComponent<AudioSource>();
 		pTwoMainAudio = playerTwoObject.GetComponent<AudioSource>();
 		pOneAudioSource = playerOneObject.GetComponentInChildren<AudioSource>();
@@ -178,12 +179,30 @@ public class GameManager : MonoBehaviour {
 		playerTwoMove.enabled = true;
 
 		playerOne.enabled = true;
+		playerTwo.enabled = true;
 		pOneAudioSource.enabled = true;
 		pOneMainAudio.enabled = true;
 		pTwoMainAudio.enabled = true;
 
 		playerOneRigidbody.isKinematic = false;
 		playerTwoRigidbody.isKinematic = false;
+
+		playerOneRigidbody.mass = 1f;
+		playerTwoRigidbody.mass = 1f;
+
+		playerOneMove.movePower = 20f;
+		playerOneMove.torquePower = 3f;
+		playerOneMove.maxAngularVelocity = 25f;
+
+		playerTwoMove.movePower = 20f;
+		playerTwoMove.torquePower = 3f;
+		playerTwoMove.maxAngularVelocity = 25f;
+
+		playerOne.speedOn = false;
+		playerTwo.speedOn = false;
+
+		playerTwo.speedOn = false;
+		playerTwo.instaOn = false;
 
 		Debug.Log ("Player movement enabled");
 

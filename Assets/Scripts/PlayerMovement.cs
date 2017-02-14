@@ -19,10 +19,10 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	[SerializeField] private float movePower = 5f;
-	[SerializeField] private float torquePower = 5f;
+	[SerializeField] public float movePower = 5f;
+	[SerializeField] public float torquePower = 5f;
 	[SerializeField] private bool useTorque = true;
-	[SerializeField] private float maxAngularVelocity = 25f;
+	[SerializeField] public float maxAngularVelocity = 25f;
 	[SerializeField] private float jumpPower = 2f;
 
 	public AudioClip jumpSound;

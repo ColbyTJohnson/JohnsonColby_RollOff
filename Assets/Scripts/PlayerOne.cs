@@ -20,6 +20,12 @@ public class PlayerOne : MonoBehaviour {
 	public GameObject redCol;
 	public GameObject blueCol;
 
+	public bool speedOn;
+	public bool instaOn;
+
+	[SerializeField] GameObject speedParticles;
+	[SerializeField] GameObject instaParticles;
+
 	private AudioSource audioSource;
 
 	// Use this for initialization
@@ -32,11 +38,25 @@ public class PlayerOne : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		
+		Vector3 offset = new Vector3 (transform.position.x, (transform.position.y - 1f), (transform.position.z - 1f));
+
+		if (speedOn) {
+
+			Instantiate (speedParticles, offset, Quaternion.identity);
+
+		} else if (instaOn) {
+
+			Instantiate (instaParticles, offset, Quaternion.identity);
+
+		}
 	
 	}
 
 	void OnTriggerEnter (Collider other) {
+
+		Rigidbody rigidbody = GetComponentInParent<Rigidbody>();
+
+		PlayerMovement playerMove = GetComponentInParent<PlayerMovement>();
 
 		audioSource = GetComponentInParent<AudioSource>();
 
@@ -66,6 +86,39 @@ public class PlayerOne : MonoBehaviour {
 			Instantiate (blueCol, other.transform.position, Quaternion.identity);
 
 			Debug.Log ("Audio played");
+
+		}
+
+		if (other.tag == "Powerup") {
+
+			if (other.name == "Speed") {
+
+//				Debug.Log (this.name + " collided with speed powerup");
+
+				speedOn = true;
+
+				playerMove.movePower = playerMove.movePower * 2;
+				playerMove.torquePower = playerMove.torquePower * 2;
+
+			} else if (other.name == "Mass") {
+
+//				Debug.Log (this.name + " collided with mass powerup");
+
+				rigidbody.mass = rigidbody.mass * 3;
+
+			} else if (other.name == "Instakill") {
+
+//				Debug.Log (this.name + " collided with mass powerup");
+
+				instaOn = true;
+
+				playerMove.movePower = playerMove.movePower * 6;
+				playerMove.torquePower = playerMove.torquePower * 6;
+				playerMove.maxAngularVelocity = playerMove.maxAngularVelocity * 5;
+
+				rigidbody.mass = rigidbody.mass * 3;
+
+			}
 
 		}
 
