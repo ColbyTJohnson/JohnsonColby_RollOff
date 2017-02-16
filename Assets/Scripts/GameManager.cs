@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour {
 		playerTwoMove.maxAngularVelocity = 25f;
 
 		playerOne.speedOn = false;
-		playerTwo.speedOn = false;
+		playerOne.instaOn = false;
 
 		playerTwo.speedOn = false;
 		playerTwo.instaOn = false;

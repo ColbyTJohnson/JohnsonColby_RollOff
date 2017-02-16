@@ -4,7 +4,7 @@
 
 // Project: Roll Off!
 
-// Last Updated: 02/07/2017
+// Last Updated: 02/15/2017
 
 // Purpose: A script to identify the death collider
 
@@ -114,11 +114,11 @@ public class DeathCollider : MonoBehaviour {
 
 		} else if (curScoreOne >= 4) {
 
-				levelManager.LoadLevel ("04a_Player1Wins");
+			levelManager.LoadLevel ("05a_Player1Wins");
 
 		} else if (curScoreTwo >= 4) {
 
-					levelManager.LoadLevel ("04b_Player2Wins");
+			levelManager.LoadLevel ("05b_Player2Wins");
 
 		}
 
