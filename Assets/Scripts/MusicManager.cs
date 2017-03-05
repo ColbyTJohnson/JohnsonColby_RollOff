@@ -60,5 +60,5 @@ public class MusicManager : MonoBehaviour {
 		audioSource.volume = _volume;
 	
 	}
-	
+
 }
